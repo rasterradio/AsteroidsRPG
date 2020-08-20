@@ -9,7 +9,7 @@ public static class ShipInput
 
     public static bool IsBraking()
     {
-        return Input.GetButtonDown("Fire2");
+        return Input.GetButton("Fire2");
     }
 
     public static float GetTurnAxis()

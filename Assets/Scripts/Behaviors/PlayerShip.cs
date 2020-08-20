@@ -21,13 +21,13 @@ public class PlayerShip : MonoBehaviour
 
     public void EnableControls()
     {
-        //GetComponent<ShipMovement>().enabled = true;
+        GetComponent<PlayerShipMovement>().enabled = true;
         //GetComponent<ShipShooter>().enabled = true;
     }
 
     public void DisableControls()
     {
-        //GetComponent<ShipMovement>().enabled = false;
+        GetComponent<PlayerShipMovement>().enabled = false;
         //GetComponent<ShipShooter>().enabled = false;
     }
 
