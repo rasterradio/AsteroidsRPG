@@ -55,16 +55,17 @@
     <Analyzer Include="C:\Program Files (x86)\Microsoft Visual Studio Tools for Unity\16.0\Analyzers\Microsoft.Unity.Analyzers.dll" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\Scripts\GameManager.cs" />
-    <Compile Include="Assets\Scripts\Behaviors\PlayerShip.cs" />
-    <Compile Include="Assets\Scripts\GameAnnouncer.cs" />
     <Compile Include="Assets\Scripts\Announcers\Announcer.cs" />
     <Compile Include="Assets\Scripts\Announcers\MultiAnnouncer.cs" />
     <Compile Include="Assets\Scripts\Announcers\ContextualLogAnnouncer.cs" />
+    <Compile Include="Assets\Scripts\Behaviors\PlayerShipMovement.cs" />
+    <Compile Include="Assets\Scripts\Behaviors\PlayerShip.cs" />
+    <Compile Include="Assets\Scripts\GameAnnouncer.cs" />
+    <Compile Include="Assets\Scripts\Input\ShipInput.cs" />
     <Compile Include="Assets\Scripts\Announcers\TextAnnouner.cs" />
     <Compile Include="Assets\Scripts\Announcers\LogAnnouncer.cs" />
-    <Compile Include="Assets\Scripts\Input\ShipInput.cs" />
-    <Compile Include="Assets\Scripts\Behaviors\PlayerShipMovement.cs" />
+    <Compile Include="Assets\Scripts\GameManager.cs" />
+    <Compile Include="Assets\Scripts\Camera\CameraFollow.cs" />
   </ItemGroup>
   <ItemGroup>
      <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
