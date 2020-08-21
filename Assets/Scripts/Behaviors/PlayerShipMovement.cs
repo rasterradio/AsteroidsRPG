@@ -3,6 +3,9 @@
 [RequireComponent(typeof(Rigidbody))]
 public class PlayerShipMovement : MonoBehaviour
 {
+    public float fuel = 300f;
+    private float fuelUsage;
+
     public float thrust = 1000f;
     public float torque = 500f;
     public float maxSpeed = 20f;
@@ -11,6 +14,9 @@ public class PlayerShipMovement : MonoBehaviour
     Rigidbody rb;
     float thrustInput;
     float turnInput;
+
+    [SerializeField]
+    private bool hasFuel = true;
 
     void ResetInput()
     {
@@ -39,14 +45,25 @@ public class PlayerShipMovement : MonoBehaviour
         Debug.Log(brake);
     }
 
-    void FixedUpdate() { Move(); Turn(); }
+    void FixedUpdate() { Move(); Turn(); ClampSpeed(); }
 
     void Move()
     {
-        // Create a vector in the direction the ship is facing.
-        // Magnitude based on the input, speed and the time between frames.
-        Vector3 thrustForce = thrustInput * thrust * Time.deltaTime * transform.up;
-        rb.AddForce(thrustForce);
+        if (hasFuel)
+        {
+            // Create a vector in the direction the ship is facing.
+            // Magnitude based on the input, speed and the time between frames.
+            Vector3 thrustForce = thrustInput * thrust * Time.deltaTime * transform.up;
+            rb.AddForce(thrustForce);
+            FuelBurn();
+        }
+    }
+
+    void FuelBurn()
+    {
+        fuelUsage = thrustInput * Time.deltaTime * 0.3f;
+        fuel -= fuelUsage;
+        if (fuel <= 0) { hasFuel = false; }
     }
 
     void Turn()
@@ -55,5 +72,10 @@ public class PlayerShipMovement : MonoBehaviour
         float turn = turnInput * torque * Time.deltaTime;
         Vector3 zTorque = transform.forward * -turn;
         rb.AddTorque(zTorque);
+    }
+
+    void ClampSpeed()
+    {
+        rb.velocity = Vector3.ClampMagnitude(rb.velocity, maxSpeed);
     }
 }

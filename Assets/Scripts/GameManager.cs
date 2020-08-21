@@ -11,6 +11,7 @@ public class GameManager : MonoBehaviour
 
     public GameObject m_PlayerShipPrefab;
     public TextMeshProUGUI m_UIText;
+    public GameObject mainCamera;
 
     PlayerShip playerShip;
     GameAnnouncer announce;
@@ -67,6 +68,7 @@ public class GameManager : MonoBehaviour
     {
         playerShip = PlayerShip.Spawn(m_PlayerShipPrefab);
         playerShip.EnableControls();
+        mainCamera.GetComponent<CameraFollow>().AttachToPlayer();
         announce.ClearAnnouncements();
         while (playerShip.IsAlive) yield return null;
     }
