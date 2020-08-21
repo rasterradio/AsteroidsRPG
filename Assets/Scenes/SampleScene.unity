@@ -654,7 +654,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f6b0e2bc8aa84dd4e9ecd8d5477ca4f9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_PlayerShipPrefab: {fileID: 2467506442996140769, guid: 4b3fb8f72920c7d4c905e9b8ca62c236, type: 3}
+  m_PlayerShipPrefab: {fileID: 2467506442996140769, guid: 8d467470027adcb40a8f5f9f1e855b1c, type: 3}
   m_UIText: {fileID: 391103048}
   mainCamera: {fileID: 519420028}
   HUDController: {fileID: 383204823}

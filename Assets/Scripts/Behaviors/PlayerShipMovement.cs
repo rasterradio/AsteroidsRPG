@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-[RequireComponent(typeof(Rigidbody))]
+[RequireComponent(typeof(Rigidbody2D))]
 public class PlayerShipMovement : MonoBehaviour
 {
     public float fuel = 300f;
@@ -9,9 +9,13 @@ public class PlayerShipMovement : MonoBehaviour
     public float thrust = 1000f;
     public float torque = 500f;
     public float maxSpeed = 20f;
+
+    [SerializeField]
+    float acceleration = 10f, turnSpeed;
+    Vector3 currVelocity;
     float brake = 0f;
 
-    Rigidbody rb;
+    Rigidbody2D rb;
     float thrustInput;
     float turnInput;
 
@@ -38,7 +42,7 @@ public class PlayerShipMovement : MonoBehaviour
         if (HUD == null) { Debug.LogError("HUDCanvas could not be found!"); }
     }
 
-    void Awake() { rb = GetComponent<Rigidbody>(); }
+    void Awake() { rb = GetComponent<Rigidbody2D>(); }
 
     void Update()
     {
@@ -49,12 +53,12 @@ public class PlayerShipMovement : MonoBehaviour
         //else { thrust = 1000f; }
         //brake = Input.GetKey("space") ? rigidbody.mass * 0.1 : 0.0;
         //if (ShipInput.IsBraking()) { rb.mass * 0.1; }
-        brake = ShipInput.IsBraking() ? rb.mass * 0.1f : 0.0f;
-        Debug.Log(brake);
+        //brake = ShipInput.IsBraking() ? rb.mass * 0.1f : 0.0f;
+        //Debug.Log(brake);
         HUD.GetComponent<HUDController>().UpdateFuelText(fuel);
     }
 
-    void FixedUpdate() { Move(); Turn(); ClampSpeed(); }
+    void FixedUpdate() { Accelerate(); Turn(); ClampSpeed(); }
 
     void Move()
     {
@@ -79,9 +83,21 @@ public class PlayerShipMovement : MonoBehaviour
     {
         // Determine the torque based on the input, force and time between frames.
         float turn = turnInput * torque * Time.deltaTime;
-        Vector3 zTorque = transform.forward * -turn;
+        float zTorque = transform.forward.z * -turn;
         rb.AddTorque(zTorque);
     }
 
     void ClampSpeed() { rb.velocity = Vector3.ClampMagnitude(rb.velocity, maxSpeed); }
+
+    private void Accelerate()
+    {
+        currVelocity += transform.up * acceleration * Time.deltaTime;
+        currVelocity = Vector3.ClampMagnitude(currVelocity, maxSpeed);
+    }
+
+    void Turn(bool right)
+    {
+        if (right) { transform.Rotate(Vector3.forward * turnSpeed * Time.deltaTime * -1); }
+        else { transform.Rotate(Vector3.forward * turnSpeed * Time.deltaTime * -1); }
+    }
 }
