@@ -161,11 +161,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3ecc0c637e83a7148a878765c243dc48, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fuel: 300
+  fuel: 5
   thrust: 1000
   torque: 1000
   maxSpeed: 12
   hasFuel: 1
+  HUDController: {fileID: 4290104299530640921, guid: 48a3f4f60862d2c40a658acd357dd25c, type: 3}
 --- !u!1 &6205234546449777230
 GameObject:
   m_ObjectHideFlags: 0
@@ -191,13 +192,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6205234546449777230}
-  m_LocalRotation: {x: 0.7071068, y: -0, z: -0, w: 0.7071067}
+  m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
   m_LocalPosition: {x: 0, y: -0.5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 2467506442996140771}
   m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
 --- !u!198 &939229075803674669
 ParticleSystem:
   m_ObjectHideFlags: 0
@@ -432,7 +433,7 @@ ParticleSystem:
     startSize:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 0.8
+      scalar: 0.6
       minScalar: 1
       maxCurve:
         serializedVersion: 2
@@ -730,7 +731,7 @@ ParticleSystem:
         m_PostInfinity: 2
         m_RotationOrder: 4
     randomizeRotationDirection: 0
-    maxNumParticles: 1000
+    maxNumParticles: 20
     size3D: 0
     rotation3D: 0
     gravityModifier:

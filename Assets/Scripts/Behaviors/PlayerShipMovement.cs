@@ -18,6 +18,8 @@ public class PlayerShipMovement : MonoBehaviour
     [SerializeField]
     private bool hasFuel = true;
 
+    private GameObject HUD;
+
     void ResetInput()
     {
         thrustInput = 0f;
@@ -28,6 +30,12 @@ public class PlayerShipMovement : MonoBehaviour
     {
         thrust = 1000f;
         torque = 500f;
+    }
+
+    private void Start()
+    {
+        HUD = GameObject.Find("HUDCanvas");
+        if (HUD == null) { Debug.LogError("HUDCanvas could not be found!"); }
     }
 
     void Awake() { rb = GetComponent<Rigidbody>(); }
@@ -43,6 +51,7 @@ public class PlayerShipMovement : MonoBehaviour
         //if (ShipInput.IsBraking()) { rb.mass * 0.1; }
         brake = ShipInput.IsBraking() ? rb.mass * 0.1f : 0.0f;
         Debug.Log(brake);
+        HUD.GetComponent<HUDController>().UpdateFuelText(fuel);
     }
 
     void FixedUpdate() { Move(); Turn(); ClampSpeed(); }
@@ -74,8 +83,5 @@ public class PlayerShipMovement : MonoBehaviour
         rb.AddTorque(zTorque);
     }
 
-    void ClampSpeed()
-    {
-        rb.velocity = Vector3.ClampMagnitude(rb.velocity, maxSpeed);
-    }
+    void ClampSpeed() { rb.velocity = Vector3.ClampMagnitude(rb.velocity, maxSpeed); }
 }

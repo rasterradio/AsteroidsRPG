@@ -12,6 +12,7 @@ public class GameManager : MonoBehaviour
     public GameObject m_PlayerShipPrefab;
     public TextMeshProUGUI m_UIText;
     public GameObject mainCamera;
+    public HUDController HUDController;
 
     PlayerShip playerShip;
     GameAnnouncer announce;
@@ -61,11 +62,13 @@ public class GameManager : MonoBehaviour
     IEnumerator ShowTitleScreen()
     {
         announce.Title();
+        HUDController.gameObject.SetActive(false);
         while (!Input.anyKeyDown) yield return null;
     }
 
     IEnumerator GamePlay()
     {
+        HUDController.gameObject.SetActive(true);
         playerShip = PlayerShip.Spawn(m_PlayerShipPrefab);
         playerShip.EnableControls();
         mainCamera.GetComponent<CameraFollow>().AttachToPlayer();
@@ -81,6 +84,7 @@ public class GameManager : MonoBehaviour
             announce.GameOver();
             yield return Pause.Brief();
             announce.ClearAnnouncements();
+            HUDController.gameObject.SetActive(false);
             NewGame();
         }
         yield return Pause.Long();
