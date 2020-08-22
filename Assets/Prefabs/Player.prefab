@@ -58,7 +58,7 @@ GameObject:
   - component: {fileID: 2467506442996140771}
   - component: {fileID: 2467506442996140768}
   - component: {fileID: -9112787267654452072}
-  - component: {fileID: 2661596228512222771}
+  - component: {fileID: 1276414036014864933}
   m_Layer: 8
   m_Name: Player
   m_TagString: Player
@@ -122,7 +122,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 06f861d1602fe4841b3e6a6d420bf462, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 5264568c45976ee47931eafd014a6f9f, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -154,7 +154,7 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!114 &2661596228512222771
+--- !u!114 &1276414036014864933
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -163,13 +163,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 2467506442996140769}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3ecc0c637e83a7148a878765c243dc48, type: 3}
+  m_Script: {fileID: 11500000, guid: 77f15e5163acbb54fb06c29c9d4e8ad2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fuel: 5
-  thrust: 500
+  fuel: 300
+  thrust: 1000
   torque: 500
   maxSpeed: 12
+  acceleration: 10
+  turnSpeed: 0
   hasFuel: 1
 --- !u!1 &6205234546449777230
 GameObject:
@@ -4901,7 +4903,7 @@ ParticleSystemRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 19c56dd46e1b5cd419190c9ac65dc611, type: 2}
+  - {fileID: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

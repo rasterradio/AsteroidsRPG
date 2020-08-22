@@ -58,7 +58,7 @@ public class PlayerShipMovement : MonoBehaviour
         HUD.GetComponent<HUDController>().UpdateFuelText(fuel);
     }
 
-    void FixedUpdate() { Accelerate(); Turn(); ClampSpeed(); }
+    void FixedUpdate() { Move(); Turn(); ClampSpeed(); }
 
     void Move()
     {
@@ -74,7 +74,7 @@ public class PlayerShipMovement : MonoBehaviour
 
     void FuelBurn()
     {
-        fuelUsage = thrustInput * Time.deltaTime * 0.3f;
+        fuelUsage = thrustInput * Time.deltaTime * 0.4f;
         fuel -= fuelUsage;
         if (fuel <= 0) { hasFuel = false; }
     }

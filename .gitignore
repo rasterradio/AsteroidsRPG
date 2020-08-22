@@ -1,11 +1,7 @@
+/*
+/*/
+
+!.gitignore
+!/Assets/
+!/ProjectSettings/
 *.meta
-Library/
-Logs/Packages-Update.log
-Packages/manifest.json
-ProjectSettings/
-Temp/
-UserSettings/
-Packages/
-.vs/
-Assets/TextMesh Pro/
-obj/
