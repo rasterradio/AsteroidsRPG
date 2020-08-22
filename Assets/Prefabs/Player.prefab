@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2154994152496395539}
   - component: {fileID: 2864655852803759245}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: ShipSpawnCircle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -59,7 +59,7 @@ GameObject:
   - component: {fileID: 2467506442996140768}
   - component: {fileID: -9112787267654452072}
   - component: {fileID: 1276414036014864933}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: Player
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -4903,7 +4903,7 @@ ParticleSystemRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 0}
+  - {fileID: 2100000, guid: 83dd595686e26754f8480d4d72bbf3d3, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

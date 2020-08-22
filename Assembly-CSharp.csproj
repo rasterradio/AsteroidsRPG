@@ -67,6 +67,7 @@
     <Compile Include="Assets\Scripts\Announcers\Announcer.cs" />
     <Compile Include="Assets\Scripts\Announcers\MultiAnnouncer.cs" />
     <Compile Include="Assets\Scripts\Behaviors\PlayerShip.cs" />
+    <Compile Include="Assets\Scripts\EnemySpawner.cs" />
   </ItemGroup>
   <ItemGroup>
      <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
