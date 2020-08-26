@@ -1,9 +1,8 @@
 ﻿using UnityEngine;
-using Pathfinding;
 
 public class AIBehavior : MonoBehaviour
 {
-    Transform target;
+    /*Transform target;
     public float speed = 1000f;
     public float torque = 500f;
     public float nextWayPointDistance = 3f;
@@ -64,5 +63,5 @@ public class AIBehavior : MonoBehaviour
         float zTorque = transform.forward.z * -turn;
         //rb.AddTorque(zTorque);
         rb.AddForce(force2);
-    }
+    }*/
 }

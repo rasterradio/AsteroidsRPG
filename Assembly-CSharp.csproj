@@ -60,15 +60,54 @@
     <Compile Include="Assets\Scripts\Behaviors\HUDController.cs" />
     <Compile Include="Assets\Scripts\GameAnnouncer.cs" />
     <Compile Include="Assets\Scripts\Camera\CameraFollow.cs" />
+    <Compile Include="Assets\Scripts\EnemySpawner.cs" />
     <Compile Include="Assets\Scripts\GameManager.cs" />
     <Compile Include="Assets\Scripts\Input\ShipInput.cs" />
     <Compile Include="Assets\Scripts\Announcers\LogAnnouncer.cs" />
     <Compile Include="Assets\Scripts\Announcers\TextAnnouner.cs" />
+    <Compile Include="Assets\Scripts\AIBehavior.cs" />
     <Compile Include="Assets\Scripts\Announcers\Announcer.cs" />
     <Compile Include="Assets\Scripts\Announcers\MultiAnnouncer.cs" />
     <Compile Include="Assets\Scripts\Behaviors\PlayerShip.cs" />
-    <Compile Include="Assets\Scripts\EnemySpawner.cs" />
-    <Compile Include="Assets\Scripts\AIBehavior.cs" />
+    <Compile Include="Assets\UnityMovementAIEdited\Scripts\ScreenBoundary2D.cs" />
+    <Compile Include="Assets\UnityMovementAIEdited\Scripts\Units\Movement\FollowPath.cs" />
+    <Compile Include="Assets\UnityMovementAIEdited\Scripts\Units\WanderAvoidUnit.cs" />
+    <Compile Include="Assets\UnityMovementAIEdited\Scripts\Units\Movement\Pursue.cs" />
+    <Compile Include="Assets\UnityMovementAIEdited\Scripts\Units\FleeUnit.cs" />
+    <Compile Include="Assets\UnityMovementAIEdited\Scripts\Units\ColAvoidUnit.cs" />
+    <Compile Include="Assets\UnityMovementAIEdited\Scripts\Spawner.cs" />
+    <Compile Include="Assets\UnityMovementAIEdited\Scripts\Units\Movement\Evade.cs" />
+    <Compile Include="Assets\UnityMovementAIEdited\Scripts\Units\Movement\Flee.cs" />
+    <Compile Include="Assets\UnityMovementAIEdited\Scripts\Units\Movement\WallAvoidance.cs" />
+    <Compile Include="Assets\UnityMovementAIEdited\Scripts\Units\Movement\CollisionAvoidance.cs" />
+    <Compile Include="Assets\UnityMovementAIEdited\Scripts\Units\Movement\Hide.cs" />
+    <Compile Include="Assets\UnityMovementAIEdited\Scripts\Units\SeekUnit.cs" />
+    <Compile Include="Assets\UnityMovementAIEdited\Scripts\Units\Movement\Wander2.cs" />
+    <Compile Include="Assets\UnityMovementAIEdited\Scripts\Units\PursueUnit.cs" />
+    <Compile Include="Assets\UnityMovementAIEdited\Scripts\Units\HideUnit.cs" />
+    <Compile Include="Assets\UnityMovementAIEdited\Scripts\Units\OffsetPursuitUnit.cs" />
+    <Compile Include="Assets\UnityMovementAIEdited\Scripts\Camera\CameraMovement.cs" />
+    <Compile Include="Assets\UnityMovementAIEdited\Scripts\Units\FlockingUnit.cs" />
+    <Compile Include="Assets\UnityMovementAIEdited\Scripts\Units\Wander1Unit.cs" />
+    <Compile Include="Assets\UnityMovementAIEdited\Scripts\Units\ArriveUnit.cs" />
+    <Compile Include="Assets\UnityMovementAIEdited\Scripts\Units\Movement\SteeringBasics.cs" />
+    <Compile Include="Assets\UnityMovementAIEdited\Scripts\Camera\InfiniteGrid.cs" />
+    <Compile Include="Assets\UnityMovementAIEdited\Scripts\Units\Movement\Cohesion.cs" />
+    <Compile Include="Assets\UnityMovementAIEdited\Scripts\Camera\ThirdPersonCamera.cs" />
+    <Compile Include="Assets\UnityMovementAIEdited\Scripts\Units\EvadeUnit.cs" />
+    <Compile Include="Assets\UnityMovementAIEdited\Scripts\Units\Movement\VelocityMatch.cs" />
+    <Compile Include="Assets\UnityMovementAIEdited\Scripts\GoDirectionUnit.cs" />
+    <Compile Include="Assets\UnityMovementAIEdited\Scripts\Units\Wander2Unit.cs" />
+    <Compile Include="Assets\UnityMovementAIEdited\Scripts\Units\Movement\Wander1.cs" />
+    <Compile Include="Assets\UnityMovementAIEdited\Scripts\Units\Movement\NearSensor.cs" />
+    <Compile Include="Assets\UnityMovementAIEdited\Scripts\Camera\FirstPersonCamera.cs" />
+    <Compile Include="Assets\UnityMovementAIEdited\Scripts\Units\Movement\Separation.cs" />
+    <Compile Include="Assets\UnityMovementAIEdited\Scripts\Units\WallAvoidanceUnit.cs" />
+    <Compile Include="Assets\UnityMovementAIEdited\Scripts\Units\Movement\OffsetPursuit.cs" />
+    <Compile Include="Assets\UnityMovementAIEdited\Scripts\Units\Movement\MovementAIRigidbody.cs" />
+    <Compile Include="Assets\UnityMovementAIEdited\Scripts\Units\InterposeUnit.cs" />
+    <Compile Include="Assets\UnityMovementAIEdited\Scripts\Units\FollowPathUnit.cs" />
+    <Compile Include="Assets\UnityMovementAIEdited\Scripts\Units\Movement\LinePath.cs" />
   </ItemGroup>
   <ItemGroup>
      <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
@@ -280,9 +319,6 @@
     </Reference>
     <Reference Include="UnityEditor">
       <HintPath>C:\Program Files\Unity\Hub\Editor\2020.1.2f1\Editor\Data\Managed\UnityEditor.dll</HintPath>
-    </Reference>
-    <Reference Include="Pathfinding.Ionic.Zip.Reduced">
-      <HintPath>Assets\AstarPathfindingProject\Plugins\DotNetZip\Pathfinding.Ionic.Zip.Reduced.dll</HintPath>
     </Reference>
     <Reference Include="netstandard">
       <HintPath>C:\Program Files\Unity\Hub\Editor\2020.1.2f1\Editor\Data\NetStandard\ref\2.0.0\netstandard.dll</HintPath>
@@ -644,9 +680,6 @@
     <Reference Include="Unity.Timeline">
       <HintPath>Library\ScriptAssemblies\Unity.Timeline.dll</HintPath>
     </Reference>
-    <Reference Include="Unity.Rider.Editor">
-      <HintPath>Library\ScriptAssemblies\Unity.Rider.Editor.dll</HintPath>
-    </Reference>
     <Reference Include="Unity.VisualStudio.Editor">
       <HintPath>Library\ScriptAssemblies\Unity.VisualStudio.Editor.dll</HintPath>
     </Reference>
@@ -658,18 +691,6 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="AstarPathfindingProject.csproj">
-      <Project>{C617EBAC-8C2D-EB53-3670-921D84AFA7C4}</Project>
-      <Name>AstarPathfindingProject</Name>
-    </ProjectReference>
-    <ProjectReference Include="PackageToolsEditor.csproj">
-      <Project>{ECB15CFE-B7B3-A9F0-66F5-52F17F3A5A0D}</Project>
-      <Name>PackageToolsEditor</Name>
-    </ProjectReference>
-    <ProjectReference Include="AstarPathfindingProjectEditor.csproj">
-      <Project>{6BE61AE8-06A3-FAF8-30B0-20B4EF35DF68}</Project>
-      <Name>AstarPathfindingProjectEditor</Name>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="GenerateTargetFrameworkMonikerAttribute" />
