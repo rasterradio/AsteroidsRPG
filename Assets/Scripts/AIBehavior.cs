@@ -1,12 +1,11 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using Pathfinding;
 
 public class AIBehavior : MonoBehaviour
 {
     Transform target;
-    public float speed = 200f;
+    public float speed = 1000f;
+    public float torque = 500f;
     public float nextWayPointDistance = 3f;
 
     bool reachedEndOfPath;
@@ -24,10 +23,7 @@ public class AIBehavior : MonoBehaviour
         InvokeRepeating("UpdatePath", 0f, 0.5f);
     }
 
-    private void OnEnable()
-    {
-        target = GameObject.FindGameObjectWithTag("Player").transform;
-    }
+    private void OnEnable() { target = GameObject.FindGameObjectWithTag("Player").transform; }
 
     void UpdatePath()
     {
@@ -54,13 +50,19 @@ public class AIBehavior : MonoBehaviour
         }
         else { reachedEndOfPath = false; }
 
-        Vector2 direction = ((Vector2)path.vectorPath[currentWayPoint] - rb.position).normalized;
-        Vector2 force = direction * speed * Time.deltaTime;
-
-        rb.AddForce(force);
-
         float distance = Vector2.Distance(rb.position, path.vectorPath[currentWayPoint]);
 
         if (distance < nextWayPointDistance) { currentWayPoint++; }
+    }
+
+    private void FixedUpdate()
+    {
+        //Vector2 direction = ((Vector2)path.vectorPath[currentWayPoint] - rb.position).normalized;
+        //Vector2 force = direction * speed * Time.deltaTime;
+        Vector3 force2 = transform.up * speed * Time.deltaTime;
+        float turn = torque * Time.deltaTime;
+        float zTorque = transform.forward.z * -turn;
+        //rb.AddTorque(zTorque);
+        rb.AddForce(force2);
     }
 }
