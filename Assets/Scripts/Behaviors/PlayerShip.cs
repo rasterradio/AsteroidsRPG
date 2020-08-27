@@ -21,7 +21,7 @@ public class PlayerShip : MonoBehaviour
 
     public void EnableControls()
     {
-        GetComponent<PlayerShipMovement>().enabled = true;
+        //GetComponent<PlayerShipMovement>().enabled = true;
         //GetComponent<ShipShooter>().enabled = true;
     }
 

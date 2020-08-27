@@ -8,21 +8,6 @@ namespace UnityMovementAI
     /// </summary>
     public class MovementAIRigidbody : MonoBehaviour
     {
-        /// <summary>
-        /// How far the character should look below him for ground to stay grounded to
-        /// </summary>
-        public float groundFollowDistance = 0.1f;
-
-        /// <summary>
-        /// The sphere cast mask that determines what layers should be consider the ground
-        /// </summary>
-        public LayerMask groundCheckMask = Physics.DefaultRaycastLayers;
-
-        /// <summary>
-        /// The maximum slope the character can climb in degrees
-        /// </summary>
-        public float slopeLimit = 80f;
-
         CircleCollider2D col2D;
 
         /// <summary>
@@ -136,12 +121,6 @@ namespace UnityMovementAI
             {
                 return false;
             }
-        }
-
-        bool IsWall(Vector3 surfNormal)
-        {
-            /* If the normal of the surface is greater then our slope limit then its a wall */
-            return Vector3.Angle(Vector3.up, surfNormal) > slopeLimit;
         }
 
         bool IsMovingInto(Vector3 dir, Vector3 normal)

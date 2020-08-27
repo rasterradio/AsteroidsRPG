@@ -18,13 +18,9 @@ namespace UnityMovementAI
 
         SteeringBasics steeringBasics;
 
-        MovementAIRigidbody rb;
-
         void Awake()
         {
             steeringBasics = GetComponent<SteeringBasics>();
-
-            rb = GetComponent<MovementAIRigidbody>();
         }
 
         void Start()

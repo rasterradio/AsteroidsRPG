@@ -1,7 +1,6 @@
 ﻿using System.Collections;
 using UnityEngine;
 using TMPro;
-
 public class GameManager : MonoBehaviour
 {
     static GameManager instance;
@@ -19,7 +18,7 @@ public class GameManager : MonoBehaviour
     private void Awake()
     {
         SingletonInstanceGuard();
-        announce = GameAnnouncer.AnnounceTo(Announcer.TextComponent(m_UIText), Announcer.Log(this));
+        //announce = GameAnnouncer.AnnounceTo(Announcer.TextComponent(m_UIText), Announcer.Log(this));
     }
 
     private void Start()
@@ -65,11 +64,11 @@ public class GameManager : MonoBehaviour
 
     IEnumerator GamePlay()
     {
-        HUDController.gameObject.SetActive(true);
+        //HUDController.gameObject.SetActive(true);
         playerShip = PlayerShip.Spawn(m_PlayerShipPrefab);
         playerShip.EnableControls();
-        mainCamera.GetComponent<CameraFollow>().AttachToPlayer();
-        announce.ClearAnnouncements();
+        //mainCamera.GetComponent<CameraFollow>().AttachToPlayer();
+        //announce.ClearAnnouncements();
         while (playerShip.IsAlive) yield return null;
     }
 
@@ -81,7 +80,7 @@ public class GameManager : MonoBehaviour
             announce.GameOver();
             yield return Pause.Brief();
             announce.ClearAnnouncements();
-            HUDController.gameObject.SetActive(false);
+            //HUDController.gameObject.SetActive(false);
             NewGame();
         }
         yield return Pause.Long();
