@@ -21,8 +21,10 @@ public class PlayerShip : MonoBehaviour
 
     public void EnableControls()
     {
-        //GetComponent<PlayerShipMovement>().enabled = true;
-        //GetComponent<ShipShooter>().enabled = true;
+        if (GetComponent<PlayerShipMovement>()) { GetComponent<PlayerShipMovement>().enabled = true; }
+        else { Debug.LogError("PlayerShipMovement compoennt not found."); }
+        //if (GetComponent<ShipShooter>()) { GetComponent<ShopShooter>().enabled = true; }
+        //else { Debug.LogError("ShipShooter compoennt not found."); }
     }
 
     public void DisableControls()

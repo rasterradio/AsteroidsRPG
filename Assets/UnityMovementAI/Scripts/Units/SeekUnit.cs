@@ -5,10 +5,6 @@ namespace UnityMovementAI
     public class SeekUnit : MonoBehaviour
     {
         public Transform target;
-        //if target is spawned in, how to get this? in start, onEnable, etc?
-        //actually seems like error is: seeker is spawned in even tho target is there on runtime
-        //Transform target;
-
         SteeringBasics steeringBasics;
 
         void Start()
@@ -18,7 +14,7 @@ namespace UnityMovementAI
 
         void OnEnable()
         {
-            //target = GameObject.FindGameObjectWithTag("Player").transform;
+            target = GameObject.FindGameObjectWithTag("Player").transform;
         }
 
         void FixedUpdate()

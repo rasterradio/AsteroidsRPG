@@ -6,9 +6,7 @@ public class CameraFollow : MonoBehaviour
     private Vector3 offset;
 
     [SerializeField]
-    private float cameraTimeToMove = 0.03f;
-    [SerializeField]
-    private float m_FieldOfView = 70f;
+    private float cameraTimeToMove = 0.03f, m_FieldOfView = 70f;
 
     private readonly float maxFOV = 150f, minFOV = 20f;
 
@@ -31,5 +29,6 @@ public class CameraFollow : MonoBehaviour
             if (Input.GetAxis("Mouse ScrollWheel") > 0 && m_FieldOfView > minFOV) { m_FieldOfView -= 5f; }
             if (Input.GetAxis("Mouse ScrollWheel") < 0 && m_FieldOfView < maxFOV) { m_FieldOfView += 5f; }
         }
+        //else { Debug.LogWarning("Could not find player to attach camera to."); }
     }
 }

@@ -1,5 +1,4 @@
 ﻿using UnityEngine;
-
 public static class ShipInput
 {
     public static bool IsShooting()
