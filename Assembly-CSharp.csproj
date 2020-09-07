@@ -108,6 +108,8 @@
     <Compile Include="Assets\UnityMovementAI\Scripts\Units\Wander2Unit.cs" />
     <Compile Include="Assets\UnityMovementAI\Scripts\Units\Movement\Cohesion.cs" />
     <Compile Include="Assets\UnityMovementAI\Scripts\Units\Movement\FollowPath.cs" />
+    <Compile Include="Assets\Scripts\IanShipSteering.cs" />
+    <Compile Include="Assets\Scripts\IanCarSteering.cs" />
   </ItemGroup>
   <ItemGroup>
      <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />

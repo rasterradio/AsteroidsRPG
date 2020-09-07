@@ -67,7 +67,8 @@ public class GameManager : MonoBehaviour
         HUDController.gameObject.SetActive(true);
         playerShip = PlayerShip.Spawn(m_PlayerShipPrefab);
         playerShip.EnableControls();
-        mainCamera.GetComponent<CameraFollow>().AttachToPlayer();
+        CameraFollow cameraFollow = mainCamera.GetComponent<CameraFollow>();
+        if (cameraFollow != null) { cameraFollow.AttachToPlayer(); }
         announce.ClearAnnouncements();
         while (playerShip.IsAlive) yield return null;
     }

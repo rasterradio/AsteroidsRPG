@@ -21,7 +21,7 @@ public class CameraFollow : MonoBehaviour
         if (player != null)
         {
             Vector3 velocity = Vector3.zero;
-            transform.position = Vector3.SmoothDamp(transform.position, player.position + offset, ref velocity, cameraTimeToMove);
+            transform.position = Vector3.SmoothDamp(transform.position, player.position + offset, ref velocity, cameraTimeToMove * Time.deltaTime);
             //velocity gets set to camera speed
 
             Camera.main.fieldOfView = m_FieldOfView;
