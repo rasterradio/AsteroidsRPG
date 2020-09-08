@@ -4,12 +4,12 @@ using UnityEngine;
 
 public class IanCarSteering : MonoBehaviour
 {
-	float speedForce = 15f;
-	float torqueForce = -200f;
+	public float speedForce = 15f;
+	public float torqueForce = -200f;
 	float driftFactorSticky = 0.9f;
 	float driftFactorSlippy = 1;
 	float maxStickyVelocity = 2.5f;
-	float minSlippyVelocity = 1.5f;
+	bool isBraking = false;
 
 	void FixedUpdate()
 	{
@@ -25,19 +25,15 @@ public class IanCarSteering : MonoBehaviour
 
 		if (Input.GetButton("Accelerate"))
 		{
-			Debug.Log("ACCEL");
 			rb.AddForce(transform.up * speedForce);
-
-			// Consider using rb.AddForceAtPosition to apply force twice, at the position
-			// of the rear tires/tyres
 		}
 		if (Input.GetButton("Brakes"))
 		{
-			rb.AddForce(transform.up * -speedForce / 2f);
-
-			// Consider using rb.AddForceAtPosition to apply force twice, at the position
-			// of the rear tires/tyres
+			isBraking = true;
+			//rb.drag = 20f;
+			rb.AddForce(transform.up * -speedForce / 8f);
 		}
+        else {isBraking = false; }
 
 		float tf = Mathf.Lerp(0, torqueForce, rb.velocity.magnitude / 2);
 		rb.angularVelocity = Input.GetAxis("Horizontal") * tf;

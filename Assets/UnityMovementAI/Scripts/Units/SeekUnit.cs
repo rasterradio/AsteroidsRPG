@@ -15,6 +15,7 @@ namespace UnityMovementAI
         void OnEnable()
         {
             target = GameObject.FindGameObjectWithTag("Player").transform;
+            if (target == null) { Debug.LogWarning("Can't find camera target."); }
         }
 
         void FixedUpdate()
@@ -25,10 +26,6 @@ namespace UnityMovementAI
 
                 steeringBasics.Steer(accel);
                 steeringBasics.LookWhereYoureGoing();
-            }
-            else
-            {
-                Debug.Log("can't find target!");
             }
         }
     }

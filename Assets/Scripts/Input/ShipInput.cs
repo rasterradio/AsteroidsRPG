@@ -3,7 +3,7 @@ public static class ShipInput
 {
     public static bool IsShooting()
     {
-        return Input.GetButtonDown("Fire1");
+        return Input.GetButtonDown("Fire3");
     }
 
     public static bool IsBraking()
@@ -20,6 +20,7 @@ public static class ShipInput
     {
         float axis = Input.GetAxis("Vertical");
         return Mathf.Clamp01(axis);
+        //return Input.GetButton("Fire1");
     }
 
     public static float GetMouseWheel()

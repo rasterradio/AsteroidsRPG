@@ -6,14 +6,9 @@ public class PlayerShipMovement : MonoBehaviour
     public float fuel = 300f;
     private float fuelUsage;
 
-    public float thrust = 1000f;
-    public float torque = 500f;
-    public float maxSpeed = 20f;
-
-    [SerializeField]
-    float acceleration = 10f, turnSpeed;
-    Vector3 currVelocity;
-    float brake = 0f;
+    public float thrust = 300f;
+    public float torque = 45f;
+    public float maxSpeed = 13f;
 
     Rigidbody2D rb;
     float thrustInput;
@@ -32,8 +27,8 @@ public class PlayerShipMovement : MonoBehaviour
 
     void ResetSpeed()
     {
-        thrust = 1000f;
-        torque = 500f;
+        thrust = 300f;
+        torque = 45f;
     }
 
     private void Start()
@@ -66,7 +61,7 @@ public class PlayerShipMovement : MonoBehaviour
         {
             // Create a vector in the direction the ship is facing.
             // Magnitude based on the input, speed and the time between frames.
-            Vector3 thrustForce = thrustInput * thrust * Time.deltaTime * transform.up;
+            Vector2 thrustForce = thrustInput * thrust * transform.up;
             rb.AddForce(thrustForce);
             FuelBurn();
         }
@@ -82,22 +77,10 @@ public class PlayerShipMovement : MonoBehaviour
     void Turn()
     {
         // Determine the torque based on the input, force and time between frames.
-        float turn = turnInput * torque * Time.deltaTime;
+        float turn = turnInput * torque;
         float zTorque = transform.forward.z * -turn;
         rb.AddTorque(zTorque);
     }
 
-    void ClampSpeed() { rb.velocity = Vector3.ClampMagnitude(rb.velocity, maxSpeed); }
-
-    private void Accelerate()
-    {
-        currVelocity += transform.up * acceleration * Time.deltaTime;
-        currVelocity = Vector3.ClampMagnitude(currVelocity, maxSpeed);
-    }
-
-    void Turn(bool right)
-    {
-        if (right) { transform.Rotate(Vector3.forward * turnSpeed * Time.deltaTime * -1); }
-        else { transform.Rotate(Vector3.forward * turnSpeed * Time.deltaTime * -1); }
-    }
+    void ClampSpeed() { rb.velocity = Vector2.ClampMagnitude(rb.velocity, maxSpeed); }
 }
