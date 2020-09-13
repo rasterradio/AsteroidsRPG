@@ -58,7 +58,6 @@ GameObject:
   - component: {fileID: 2467506442996140771}
   - component: {fileID: 2467506442996140768}
   - component: {fileID: -9112787267654452072}
-  - component: {fileID: 1276414036014864933}
   - component: {fileID: 4985354207913572036}
   m_Layer: 0
   m_Name: OldPlayer
@@ -155,23 +154,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!114 &1276414036014864933
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2467506442996140769}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 77f15e5163acbb54fb06c29c9d4e8ad2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  fuel: 300
-  thrust: 100
-  torque: 45
-  maxSpeed: 13
-  hasFuel: 1
 --- !u!114 &4985354207913572036
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -187,6 +169,8 @@ MonoBehaviour:
   thrustSpeed: 15
   torqueForce: 45
   maxSpeed: 13
+  hasFuel: 1
+  fuel: 300
 --- !u!1 &6205234546449777230
 GameObject:
   m_ObjectHideFlags: 0

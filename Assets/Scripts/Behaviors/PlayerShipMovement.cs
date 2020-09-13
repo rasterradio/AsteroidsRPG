@@ -3,32 +3,29 @@
 [RequireComponent(typeof(Rigidbody2D))]
 public class PlayerShipMovement : MonoBehaviour
 {
-    public float fuel = 300f;
-    private float fuelUsage;
-
-    public float thrust = 300f;
-    public float torque = 45f;
-    public float maxSpeed = 13f;
+    [SerializeField] float thrustSpeed = 15f, torqueForce = 45f, maxSpeed = 13f;
 
     Rigidbody2D rb;
-    float thrustInput;
-    float turnInput;
+    bool brakingInput;
+    float turnInput, thrustInput;
 
-    [SerializeField]
-    private bool hasFuel = true;
+    [SerializeField] bool hasFuel = true;
+    [SerializeField] float fuel = 300f;
+    float fuelUsage;
 
-    private GameObject HUD;
+    GameObject HUD;
 
     void ResetInput()
     {
         thrustInput = 0f;
+        brakingInput = false;
         turnInput = 0f;
     }
 
     void ResetSpeed()
     {
-        thrust = 300f;
-        torque = 45f;
+        thrustSpeed = 15f;
+        torqueForce = 45f;
     }
 
     private void Start()
@@ -37,12 +34,22 @@ public class PlayerShipMovement : MonoBehaviour
         if (HUD == null) { Debug.LogError("HUDCanvas could not be found!"); }
     }
 
-    void Awake() { rb = GetComponent<Rigidbody2D>(); }
+    private void Awake()
+    {
+        rb = GetComponent<Rigidbody2D>();
+    }
 
-    void Update()
+    private void OnEnable()
+    {
+        ResetInput();
+    }
+
+    private void Update()
     {
         turnInput = ShipInput.GetTurnAxis();
         thrustInput = ShipInput.GetForwardThrust();
+        brakingInput = ShipInput.IsBraking();
+        HUD.GetComponent<HUDController>().UpdateFuelText(fuel);
         //isBraking = ShipInput.IsBraking() ? -1 : 1;
         //if (ShipInput.IsBraking()) { thrust = 10f; }
         //else { thrust = 1000f; }
@@ -50,18 +57,19 @@ public class PlayerShipMovement : MonoBehaviour
         //if (ShipInput.IsBraking()) { rb.mass * 0.1; }
         //brake = ShipInput.IsBraking() ? rb.mass * 0.1f : 0.0f;
         //Debug.Log(brake);
-        HUD.GetComponent<HUDController>().UpdateFuelText(fuel);
     }
 
-    void FixedUpdate() { Move(); Turn(); ClampSpeed(); }
+    private void FixedUpdate()
+    {
+        Move(); Turn(); ClampSpeed();
+        if (brakingInput) { Brake(); }
+    }
 
     void Move()
     {
         if (hasFuel)
         {
-            // Create a vector in the direction the ship is facing.
-            // Magnitude based on the input, speed and the time between frames.
-            Vector2 thrustForce = thrustInput * thrust * transform.up;
+            Vector2 thrustForce = thrustInput * thrustSpeed * transform.up;
             rb.AddForce(thrustForce);
             FuelBurn();
         }
@@ -76,11 +84,18 @@ public class PlayerShipMovement : MonoBehaviour
 
     void Turn()
     {
-        // Determine the torque based on the input, force and time between frames.
-        float turn = turnInput * torque;
+        float turn = turnInput * torqueForce;
         float zTorque = transform.forward.z * -turn;
         rb.AddTorque(zTorque);
     }
 
     void ClampSpeed() { rb.velocity = Vector2.ClampMagnitude(rb.velocity, maxSpeed); }
+
+    void Brake()
+    {
+        //rb.AddTorque?
+
+        //rb.drag = 20f;
+        //rb.AddForce(transform.up * -speedForce / 8f);
+    }
 }

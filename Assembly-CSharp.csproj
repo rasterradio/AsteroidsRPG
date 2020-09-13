@@ -8,7 +8,8 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProductVersion>10.0.20506</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <RootNamespace></RootNamespace>
+    <RootNamespace>
+    </RootNamespace>
     <ProjectGuid>{6615CB48-2508-F7E2-2CA1-A9F18CDD0B0E}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
@@ -60,16 +61,13 @@
     <Compile Include="Assets\UnityMovementAI\Scripts\Units\Movement\LinePath.cs" />
     <Compile Include="Assets\UnityMovementAI\Scripts\Units\Movement\SteeringBasics.cs" />
     <Compile Include="Assets\UnityMovementAI\Scripts\Units\FlockingUnit.cs" />
-    <Compile Include="Assets\Scripts\Behaviors\PlayerShipMovement.cs" />
     <Compile Include="Assets\UnityMovementAI\Scripts\Units\SeekUnit.cs" />
     <Compile Include="Assets\UnityMovementAI\Scripts\Camera\CameraMovement.cs" />
     <Compile Include="Assets\UnityMovementAI\Scripts\Units\FollowPathUnit.cs" />
-    <Compile Include="Assets\Scripts\IanCarSteering.cs" />
-    <Compile Include="Assets\Scripts\IanShipSteering.cs" />
     <Compile Include="Assets\UnityMovementAI\Scripts\ScreenBoundary2D.cs" />
     <Compile Include="Assets\UnityMovementAI\Scripts\Units\WallAvoidanceUnit.cs" />
-    <Compile Include="Assets\Scripts\Behaviors\HUDController.cs" />
-    <Compile Include="Assets\Scripts\GameAnnouncer.cs" />
+    <Compile Include="Assets\Scripts\HUD\HUDController.cs" />
+    <Compile Include="Assets\Scripts\HUD\GameAnnouncer.cs" />
     <Compile Include="Assets\UnityMovementAI\Scripts\Units\HideUnit.cs" />
     <Compile Include="Assets\UnityMovementAI\Scripts\Camera\ThirdPersonCamera.cs" />
     <Compile Include="Assets\UnityMovementAI\Scripts\Units\ArriveUnit.cs" />
@@ -79,9 +77,9 @@
     <Compile Include="Assets\UnityMovementAI\Scripts\Units\PursueUnit.cs" />
     <Compile Include="Assets\UnityMovementAI\Scripts\Units\ColAvoidUnit.cs" />
     <Compile Include="Assets\Scripts\Camera\CameraFollow.cs" />
-    <Compile Include="Assets\Scripts\EnemySpawner.cs" />
+    <Compile Include="Assets\Scripts\AI\EnemySpawner.cs" />
     <Compile Include="Assets\Scripts\GameManager.cs" />
-    <Compile Include="Assets\Scripts\Input\ShipInput.cs" />
+    <Compile Include="Assets\Scripts\Behaviors\Input\ShipInput.cs" />
     <Compile Include="Assets\Scripts\Announcers\LogAnnouncer.cs" />
     <Compile Include="Assets\UnityMovementAI\Scripts\Camera\FirstPersonCamera.cs" />
     <Compile Include="Assets\UnityMovementAI\Scripts\Units\Movement\OffsetPursuit.cs" />
@@ -89,7 +87,7 @@
     <Compile Include="Assets\UnityMovementAI\Scripts\Units\EvadeUnit.cs" />
     <Compile Include="Assets\Scripts\Announcers\TextAnnouner.cs" />
     <Compile Include="Assets\UnityMovementAI\Scripts\Units\Movement\WallAvoidance.cs" />
-    <Compile Include="Assets\Scripts\AIBehavior.cs" />
+    <Compile Include="Assets\Scripts\AI\AIBehavior.cs" />
     <Compile Include="Assets\UnityMovementAI\Scripts\Units\Movement\VelocityMatch.cs" />
     <Compile Include="Assets\UnityMovementAI\Scripts\GoDirectionUnit.cs" />
     <Compile Include="Assets\Scripts\Announcers\Announcer.cs" />
@@ -103,6 +101,7 @@
     <Compile Include="Assets\UnityMovementAI\Scripts\Units\Movement\Hide.cs" />
     <Compile Include="Assets\UnityMovementAI\Scripts\Spawner.cs" />
     <Compile Include="Assets\UnityMovementAI\Scripts\Units\Movement\CollisionAvoidance.cs" />
+    <Compile Include="Assets\Scripts\Behaviors\PlayerShipMovement.cs" />
     <Compile Include="Assets\UnityMovementAI\Scripts\Units\OffsetPursuitUnit.cs" />
     <Compile Include="Assets\UnityMovementAI\Scripts\Units\Movement\Wander2.cs" />
     <Compile Include="Assets\Scripts\Behaviors\PlayerShip.cs" />
@@ -110,30 +109,30 @@
     <Compile Include="Assets\UnityMovementAI\Scripts\Units\Wander2Unit.cs" />
     <Compile Include="Assets\UnityMovementAI\Scripts\Units\Movement\Cohesion.cs" />
     <Compile Include="Assets\UnityMovementAI\Scripts\Units\Movement\FollowPath.cs" />
-    <Compile Include="Assets\Scripts\PlayerCarMovement.cs" />
   </ItemGroup>
   <ItemGroup>
-     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
-     <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Mobile Overlay.shader" />
-     <None Include="Assets\TextMesh Pro\Shaders\TMP_Bitmap.shader" />
-     <None Include="Assets\TextMesh Pro\Shaders\TMPro_Mobile.cginc" />
-     <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF SSD.shader" />
-     <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Surface-Mobile.shader" />
-     <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Surface.shader" />
-     <None Include="Assets\TextMesh Pro\Sprites\EmojiOne Attribution.txt" />
-     <None Include="Assets\TextMesh Pro\Shaders\TMP_Bitmap-Custom-Atlas.shader" />
-     <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF.shader" />
-     <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Mobile SSD.shader" />
-     <None Include="Assets\TextMesh Pro\Resources\LineBreaking Leading Characters.txt" />
-     <None Include="Assets\TextMesh Pro\Shaders\TMPro_Properties.cginc" />
-     <None Include="Assets\TextMesh Pro\Shaders\TMPro_Surface.cginc" />
-     <None Include="Assets\TextMesh Pro\Resources\LineBreaking Following Characters.txt" />
-     <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Mobile Masking.shader" />
-     <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF Overlay.shader" />
-     <None Include="Assets\TextMesh Pro\Shaders\TMP_Bitmap-Mobile.shader" />
-     <None Include="Assets\TextMesh Pro\Fonts\LiberationSans - OFL.txt" />
-     <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Mobile.shader" />
-     <None Include="Assets\TextMesh Pro\Shaders\TMP_Sprite.shader" />
+    <None Include=".editorconfig" />
+    <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
+    <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Mobile Overlay.shader" />
+    <None Include="Assets\TextMesh Pro\Shaders\TMP_Bitmap.shader" />
+    <None Include="Assets\TextMesh Pro\Shaders\TMPro_Mobile.cginc" />
+    <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF SSD.shader" />
+    <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Surface-Mobile.shader" />
+    <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Surface.shader" />
+    <None Include="Assets\TextMesh Pro\Sprites\EmojiOne Attribution.txt" />
+    <None Include="Assets\TextMesh Pro\Shaders\TMP_Bitmap-Custom-Atlas.shader" />
+    <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF.shader" />
+    <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Mobile SSD.shader" />
+    <None Include="Assets\TextMesh Pro\Resources\LineBreaking Leading Characters.txt" />
+    <None Include="Assets\TextMesh Pro\Shaders\TMPro_Properties.cginc" />
+    <None Include="Assets\TextMesh Pro\Shaders\TMPro_Surface.cginc" />
+    <None Include="Assets\TextMesh Pro\Resources\LineBreaking Following Characters.txt" />
+    <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Mobile Masking.shader" />
+    <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF Overlay.shader" />
+    <None Include="Assets\TextMesh Pro\Shaders\TMP_Bitmap-Mobile.shader" />
+    <None Include="Assets\TextMesh Pro\Fonts\LiberationSans - OFL.txt" />
+    <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Mobile.shader" />
+    <None Include="Assets\TextMesh Pro\Shaders\TMP_Sprite.shader" />
     <Reference Include="UnityEngine">
       <HintPath>C:\Program Files\Unity\Hub\Editor\2020.1.2f1\Editor\Data\Managed\UnityEngine\UnityEngine.dll</HintPath>
     </Reference>
