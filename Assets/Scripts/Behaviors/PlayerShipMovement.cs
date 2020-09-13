@@ -4,10 +4,11 @@
 public class PlayerShipMovement : MonoBehaviour
 {
     [SerializeField] float thrustSpeed = 15f, torqueForce = 45f, maxSpeed = 13f;
+    [SerializeField] float brakingForce = 10f, maxBrakingTorque = 60f, maxBrakingDrag = 20f;
 
     Rigidbody2D rb;
     bool brakingInput;
-    float turnInput, thrustInput;
+    float turnInput, thrustInput, currBrakeTorque, currBrakeDrag;
 
     [SerializeField] bool hasFuel = true;
     [SerializeField] float fuel = 300f;
@@ -50,19 +51,11 @@ public class PlayerShipMovement : MonoBehaviour
         thrustInput = ShipInput.GetForwardThrust();
         brakingInput = ShipInput.IsBraking();
         HUD.GetComponent<HUDController>().UpdateFuelText(fuel);
-        //isBraking = ShipInput.IsBraking() ? -1 : 1;
-        //if (ShipInput.IsBraking()) { thrust = 10f; }
-        //else { thrust = 1000f; }
-        //brake = Input.GetKey("space") ? rigidbody.mass * 0.1 : 0.0;
-        //if (ShipInput.IsBraking()) { rb.mass * 0.1; }
-        //brake = ShipInput.IsBraking() ? rb.mass * 0.1f : 0.0f;
-        //Debug.Log(brake);
     }
 
     private void FixedUpdate()
     {
-        Move(); Turn(); ClampSpeed();
-        if (brakingInput) { Brake(); }
+        Move(); Turn(); ClampSpeed(); Brake();
     }
 
     void Move()
@@ -93,9 +86,23 @@ public class PlayerShipMovement : MonoBehaviour
 
     void Brake()
     {
-        //rb.AddTorque?
-
-        //rb.drag = 20f;
+        if (brakingInput)
+        {
+            if (currBrakeTorque < maxBrakingTorque) { currBrakeTorque++; }
+            if (currBrakeDrag < maxBrakingDrag) { currBrakeDrag += 8; }
+        }
+        else
+        {
+            currBrakeTorque--;
+            currBrakeDrag -= 3;
+        }
+        rb.drag = currBrakeDrag;
+        //rb.AddTorque(brakingForce);
         //rb.AddForce(transform.up * -speedForce / 8f);
+    }
+
+    Vector2 ForwardVelocity()
+    {
+        return transform.up * Vector2.Dot(GetComponent<Rigidbody2D>().velocity, transform.up);
     }
 }

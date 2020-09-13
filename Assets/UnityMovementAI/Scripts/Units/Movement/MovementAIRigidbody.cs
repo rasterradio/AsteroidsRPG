@@ -69,8 +69,8 @@ namespace UnityMovementAI
              * ground / movement normals before their velocity is set */
         }
 
-        int count = 0;
-        int countDebug = 0;
+        //int count = 0;
+        //int countDebug = 0;
 
         IEnumerator DebugDraw()
         {
@@ -79,8 +79,8 @@ namespace UnityMovementAI
             Vector3 origin = ColliderPosition;
             Debug.DrawLine(origin, origin + (Velocity.normalized), Color.red, 0f, false);
 
-            count++;
-            countDebug = 0;
+            //count++;
+            //countDebug = 0;
             StartCoroutine(DebugDraw());
         }
 

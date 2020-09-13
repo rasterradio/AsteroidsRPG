@@ -7,8 +7,7 @@ public class EnemySpawner : MonoBehaviour
     Vector2 spawnLocation;
     [SerializeField]
     float spawnRate = 2f;
-    [SerializeField]
-    bool spawnTimerToggle;
+    public bool spawnTimerToggle;
 
     private void Update()
     {
